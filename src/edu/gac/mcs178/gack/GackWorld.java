@@ -53,6 +53,8 @@ public class GackWorld extends World {
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
 		
 		lounge.gain(new Thing("Karl's glasses"));
+		//add new scroll to lund
+		lund.gain(new Scroll ("Louis don't barf magical enchantment"));
 		
 		library.gain(new Scroll("Scroll of Enlightenment"));
 		String[] someTitles = {"War and Peace", "Iliad", "Collected Works of Rilke"};
@@ -61,6 +63,7 @@ public class GackWorld extends World {
 		}
 		computerLab.gain(new Scroll("Unix Programmers Manual"));
 		computerLab.gain(new Scroll("NeXT User's Reference"));
+		
 		
 		setPlayer(new Person("player", dormitory));
 	}
