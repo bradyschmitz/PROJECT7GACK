@@ -51,6 +51,9 @@ public class GackWorld extends World {
 		new AutoPerson("Karl", computerLab, 4);
 		new Witch("Barbara", offices, 3, pond);
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
+		//create new witch named Jacob
+		new Witch("Jacob", lund, 2, pond);
+		
 		
 		lounge.gain(new Thing("Karl's glasses"));
 		//add new scroll to lund
