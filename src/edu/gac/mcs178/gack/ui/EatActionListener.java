@@ -50,7 +50,7 @@ public class EatActionListener implements ActionListener{
 		if (enabled) {
 			Thing item = (Thing) dropJComboBox.getSelectedItem();
 			if (!item.getName().equals(INTSRUCTIONS.getName())) {
-				gui.displayMessage("\n>>> Drop " + item);
+				gui.displayMessage("\n>>> Eat " + item);
 				player.lose(item);
 				gui.playTurn();
 			}
