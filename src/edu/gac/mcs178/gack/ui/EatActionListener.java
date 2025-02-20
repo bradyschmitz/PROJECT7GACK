@@ -19,4 +19,41 @@ public class EatActionListener implements ActionListener{
 	private JComboBox dropJComboBox;
 	private boolean enabled;
 	private List<Thing> things;
+
+    public EatActionListener(GraphicalUserInterface gui, Person player, JComboBox dropJComboBox) {
+        super();
+        this.gui = gui;
+        this.player = player;
+        this.dropJComboBox = dropJComboBox;
+        this.enabled = true;
+        things = player.getPossessions();
+        dropJComboBox.addItem(INSTRUCTIONS);
+        for (Thing thing : things) {
+            dropJComboBox.addItem(thing);
+        }
+    }
+    public void setEnabled(boolean b) {
+		enabled = b;
+	}
+	
+	public void updateJComboBox() {
+		dropJComboBox.removeAllItems();
+		things = player.getPossessions();
+		dropJComboBox.addItem(INTSRUCTIONS);
+		for (Thing thing : things) {
+			dropJComboBox.addItem(thing);
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (enabled) {
+			Thing item = (Thing) dropJComboBox.getSelectedItem();
+			if (!item.getName().equals(INTSRUCTIONS.getName())) {
+				gui.displayMessage("\n>>> Drop " + item);
+				player.lose(item);
+				gui.playTurn();
+			}
+		}
+	}
 }
