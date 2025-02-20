@@ -22,6 +22,7 @@ public class Thing {
 	public void becomeUnowned() {
 		owner = null;
 	}
+
 	
 	@Override
 	public String toString() {

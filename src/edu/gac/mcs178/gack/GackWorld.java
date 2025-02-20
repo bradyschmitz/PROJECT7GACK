@@ -60,6 +60,10 @@ public class GackWorld extends World {
 		lounge.gain(new Thing("Karl's glasses"));
 		//add new scroll to lund
 		lund.gain(new Scroll ("Louis don't barf magical enchantment"));
+
+		// Add new item Potatos O'Brian to the foodService
+		foodService.gain(new Thing("Potatos O'Brian"));
+
 		
 		library.gain(new Scroll("Scroll of Enlightenment"));
 		String[] someTitles = {"War and Peace", "Iliad", "Collected Works of Rilke"};

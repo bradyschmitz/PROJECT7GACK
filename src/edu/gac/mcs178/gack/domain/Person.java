@@ -119,6 +119,19 @@ public class Person {
 			this.say("Here, have my charity " + thing + " to " + recipient);
 		}
 	}
+
+	// Add eat action, owner loses it and it is gone from the place where the owner is located
+	public void eat(Thing thing) {
+		if (!equals(thing.getOwner())) {
+			Utility.displayMessage(name + " does not have " + thing);
+		}
+		else {
+			thing.becomeUnowned();
+			possessions.remove(thing);
+			place.lose(thing);
+			Utility.displayMessage(name + " eats " + thing + " and it is gone");
+		}
+	}
 	
 	public void lose(Thing thing) {
 		if (!equals(thing.getOwner())) {
