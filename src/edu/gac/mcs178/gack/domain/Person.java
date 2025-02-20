@@ -108,17 +108,15 @@ public class Person {
 	
 	//new give button
 	public void give(Thing thing) {
+		//need to make sure the person has the thing to give
 		if (!equals(thing.getOwner())) {
-			Utility.displayMessage(this + " already has " + thing);
+			Utility.displayMessage(this + " does not have " + thing);
 		} else {
-			if (thing.isOwned()) {
-				Person owner = thing.getOwner();
-				owner.lose(thing);
-				owner.haveFit();
-			}
-			thing.setOwner(this);
-			possessions.add(thing);
-			say("I take " + thing);
+			thing.becomeUnowned();
+			this.possessions.remove(thing);
+			recipient.posessions.add(thing);
+			thing.setOwner(recipient);
+			this.say("Here, have my charity " + thing + " to " + recipient);
 		}
 	}
 	

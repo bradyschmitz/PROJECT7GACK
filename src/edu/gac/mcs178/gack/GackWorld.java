@@ -47,12 +47,14 @@ public class GackWorld extends World {
 		//make lund new neighbor for the dormitory
 		dormitory.addNewNeighbor("northwest", lund);
 		
-		new AutoPerson("Max", offices, 2);
+		new AutoPerson("Max", dormitory, 2);
 		new AutoPerson("Karl", computerLab, 4);
 		new Witch("Barbara", offices, 3, pond);
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
 		//create new witch named Jacob
 		new Witch("Jacob", lund, 2, pond);
+		
+		dormitory.gain(new Scroll("Late Lab Report"));
 		
 		
 		lounge.gain(new Thing("Karl's glasses"));
