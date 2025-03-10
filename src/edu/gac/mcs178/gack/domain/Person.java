@@ -136,6 +136,28 @@ public class Person {
 		}
 	}
 	
+	//new eat button
+	public void eat (String thingName) {
+		//creating variable to store the things that can be eaten
+		Thing canBeEaten = null;
+		
+		for (Thing food : possessions) {
+			if (food.getName().equalsIgnoreCase(thingName) && food instanceof Potatoes) {
+				//if the person has something to eat, put it in canBeEaten
+				canBeEaten = food;
+				break;
+			}
+		}
+		
+		
+		//now if the food was found, the user can eat it
+		if (canBeEaten != null) {
+			((Potatoes) canBeEaten).beEaten(this);
+		} else {
+			System.out.println(name + " has nothing to eat!");
+		}
+	}
+	
 
 	
 	@Override
