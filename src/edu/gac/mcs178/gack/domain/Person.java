@@ -142,7 +142,7 @@ public class Person {
 		Thing canBeEaten = null;
 		
 		for (Thing food : possessions) {
-			if (food.getName().equalsIgnoreCase(thingName) && food instanceof Potatoes) {
+			if (food.getName().equalsIgnoreCase(thingName) && food instanceof Food) {
 				//if the person has something to eat, put it in canBeEaten
 				canBeEaten = food;
 				break;
@@ -152,7 +152,7 @@ public class Person {
 		
 		//now if the food was found, the user can eat it
 		if (canBeEaten != null) {
-			((Potatoes) canBeEaten).beEaten(this);
+			((Food) canBeEaten).beEaten(this);
 		} else {
 			System.out.println(name + " has nothing to eat!");
 		}
