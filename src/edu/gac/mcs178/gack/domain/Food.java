@@ -21,7 +21,7 @@ public class Food extends Thing{
 			if (isPoison) {
 				System.out.println(theEater.getName() + " has eaten the " + getName() + " and got sick!");
 				theEater.haveFit();
-				theEater.die();
+				theEater.die();//
 			} else {
 				System.out.println(theEater.getName() + " has eaten " + getName() + " and feels great!");
 			}
