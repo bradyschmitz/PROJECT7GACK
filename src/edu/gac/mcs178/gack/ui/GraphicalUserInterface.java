@@ -40,6 +40,7 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 	private DropActionListener dropActionListener;
 	private ReadActionListener readActionListener;
 	private GiveActionListener giveActionListener;
+	private EatingActionListener eatingActionListener;
 	
 	public GraphicalUserInterface(Person player) {
 		super();
@@ -133,6 +134,16 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 		dropActionListener = new DropActionListener(this, player, dropJComboBox);
 		dropJComboBox.addActionListener(dropActionListener);
 		controlPanel.add(dropJComboBox);
+	
+	
+	
+	
+		// eating combo box
+		JComboBox eatJComboBox = new JComboBox();
+		EatingActionListener eatActionListener = new EatingActionListener(this, player, eatJComboBox);
+		eatJComboBox.addActionListener(eatActionListener);
+		controlPanel.add(eatJComboBox);
+		
 	}
 	
 	public void playTurn() {
@@ -147,6 +158,7 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 		dropActionListener.updateJComboBox();
 		readActionListener.updateJComboBox();
 		giveActionListener.updateJComboBox();
+		eatingActionListener.updateJComboBox();
 		enableJComboListeners(true);
 	}
 	

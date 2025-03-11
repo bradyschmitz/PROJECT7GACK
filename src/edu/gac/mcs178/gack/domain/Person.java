@@ -137,26 +137,39 @@ public class Person {
 	}
 	
 	//new eat button
-	public void eat (String thingName) {
-		//creating variable to store the things that can be eaten
-		Thing canBeEaten = null;
-		
-		for (Thing food : possessions) {
-			if (food.getName().equalsIgnoreCase(thingName) && food instanceof Food) {
-				//if the person has something to eat, put it in canBeEaten
-				canBeEaten = food;
-				break;
+	//first checks to see if the items they have are food
+	public List<String> getFoodItems(){
+		List<String> foodItems = new ArrayList<String>();
+		for (Thing item: possessions) {
+			if (item instanceof Food) {
+				foodItems.add(item.getName());
 			}
 		}
+		return foodItems;
 		
-		
-		//now if the food was found, the user can eat it
-		if (canBeEaten != null) {
-			((Food) canBeEaten).beEaten(this);
-		} else {
-			System.out.println(name + " has nothing to eat!");
-		}
 	}
+	
+	public void eat (String foodName) {
+		//create variable to hold the things that can be eaten
+		Thing edibleFood = null;
+
+        // Find the edible items in possessions
+        for (Thing item : possessions) {
+            if (item.getName().equalsIgnoreCase(foodName) && item instanceof Food) {
+                edibleFood = item;
+                break;
+            }
+        }
+
+        // If the food item was found, eat it
+        if (edibleFood != null) {
+            ((Food) edibleFood).beEaten(this);
+            possessions.remove(edibleFood); // Remove the item after eating
+            say("I just ate " + foodName + ".");
+        } else {
+            say("I have no food to eat");
+        }
+    }
 	
 
 	
