@@ -110,7 +110,7 @@ public class Person {
 	            Utility.displayMessage(this + " has grabbed the " + food.getName() + " and has eaten it. Delicious!");
 	            eat(food);
 	            if (food.isPoison()) {
-	            	Utility.displayMessage(this + " has gotten very sick after that meal. It had food poisoning! " + this + " does not know how much longer they will last...");
+	            	Utility.displayMessage(this + " has gotten very sick after that meal. It had food poisoning in it. " + this + " does not know how much longer they will last...");
 	            	die();
 	            }
 	        } else {
