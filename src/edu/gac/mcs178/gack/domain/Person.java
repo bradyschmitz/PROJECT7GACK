@@ -3,6 +3,8 @@ package edu.gac.mcs178.gack.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import edu.gac.mcs178.gack.Utility;
 
 public class Person {
@@ -91,19 +93,31 @@ public class Person {
 		}
 	}
 	
+	//updated this function so that the user eats the item when they take it
 	public void take(Thing thing) {
-		if (equals(thing.getOwner())) {
-			Utility.displayMessage(this + " already has " + thing);
-		} else {
-			if (thing.isOwned()) {
-				Person owner = thing.getOwner();
-				owner.lose(thing);
-				owner.haveFit();
-			}
-			thing.setOwner(this);
-			possessions.add(thing);
-			say("I take " + thing);
-		}
+	    if (equals(thing.getOwner())) {
+	        Utility.displayMessage(this + " already has " + thing);
+	    } else {
+	        if (thing.isOwned()) {
+	            Person owner = thing.getOwner();
+	            owner.lose(thing);
+	            owner.haveFit();
+	        }
+	        thing.setOwner(this);
+	        
+	        if (thing instanceof Food) {
+	            Food food = (Food) thing;
+	            Utility.displayMessage(this + " has grabbed the " + food.getName() + " and has eaten it. Delicious!");
+	            eat(food);
+	            if (food.isPoison()) {
+	            	Utility.displayMessage(this + " has gotten very sick after that meal. It had food poisoning! " + this + " does not know how much longer they will last...");
+	            	die();
+	            }
+	        } else {
+	            possessions.add(thing);
+	            say("I take " + thing);
+	        }
+	    }
 	}
 	
 	//new give button
@@ -137,25 +151,22 @@ public class Person {
 	}
 	
 	//new eat button
-	public void eat (String thingName) {
-		//creating variable to store the things that can be eaten
-		Thing canBeEaten = null;
-		
-		for (Thing food : possessions) {
-			if (food.getName().equalsIgnoreCase(thingName) && food instanceof Food) {
-				//if the person has something to eat, put it in canBeEaten
-				canBeEaten = food;
-				break;
-			}
+	public void eat (Food food) {
+		if (possessions.contains(food)) {
+			food.beEaten(this);
 		}
-		
-		
-		//now if the food was found, the user can eat it
-		if (canBeEaten != null) {
-			((Food) canBeEaten).beEaten(this);
-		} else {
-			System.out.println(name + " has nothing to eat!");
+		else {
+			System.out.println(name + "does not have any " + food.getName() + " to eat.");
 		}
+	}
+	
+	//new die function for if the user gets food poisoning
+	public void die() {
+		//use pop up method
+	    JOptionPane.showMessageDialog(null, name + " has died from food poisoning. Should have chosen a more healthy option, better luck next time. \nGAME OVER.", 
+	                                  "Game Over", JOptionPane.ERROR_MESSAGE);
+	    
+	    System.exit(0); 
 	}
 	
 

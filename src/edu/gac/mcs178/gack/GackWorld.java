@@ -76,15 +76,15 @@ public class GackWorld extends World {
 		setPlayer(new Person("player", dormitory));
 		
 		//add new food (potatoes)
-		Food obPotatoes = new Food("Potatoes O'Brien");
-		Food hashBrowns = new Food("Hash Browns");
-		Food taterTots = new Food("Tater Tots");
-		Food dicedPotatoes = new Food("Seasoned Diced Potatoes");
+		Food obPotatoes = new Food("Potatoes O'Brien", true);
+		Food hashBrowns = new Food("Hash Browns", false);
+		Food taterTots = new Food("Tater Tots", false);
+		Food dicedPotatoes = new Food("Seasoned Diced Potatoes", false);
 		
 		//place the food in the foodService
-		foodService.gain(obPotatoes);
+		dormitory.gain(obPotatoes);
 		foodService.gain(hashBrowns);
-		foodService.gain(taterTots);
+		lounge.gain(taterTots);
 		foodService.gain(dicedPotatoes);
 		
 	}
