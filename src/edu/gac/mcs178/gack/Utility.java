@@ -6,6 +6,7 @@ import java.util.List;
 import edu.gac.mcs178.gack.domain.Person;
 import edu.gac.mcs178.gack.domain.Place;
 import edu.gac.mcs178.gack.domain.Thing;
+import edu.gac.mcs178.gack.ui.MessageDisplay;
 
 public class Utility {
 	
