@@ -1,6 +1,7 @@
 package edu.gac.mcs178.gack;
 
 import edu.gac.mcs178.gack.domain.AutoPerson;
+import edu.gac.mcs178.gack.domain.Food;
 import edu.gac.mcs178.gack.domain.Person;
 import edu.gac.mcs178.gack.domain.Place;
 import edu.gac.mcs178.gack.domain.Scroll;
@@ -54,6 +55,8 @@ public class GackWorld extends World {
 		//create new witch named Jacob
 		new Witch("Jacob", lund, 2, pond);
 		
+		
+		
 		dormitory.gain(new Scroll("Late Lab Report"));
 		
 		
@@ -71,5 +74,18 @@ public class GackWorld extends World {
 		
 		
 		setPlayer(new Person("player", dormitory));
+		
+		//add new food (potatoes)
+		Food obPotatoes = new Food("Potatoes O'Brien");
+		Food hashBrowns = new Food("Hash Browns");
+		Food taterTots = new Food("Tater Tots");
+		Food dicedPotatoes = new Food("Seasoned Diced Potatoes");
+		
+		//place the food in the foodService
+		foodService.gain(obPotatoes);
+		foodService.gain(hashBrowns);
+		foodService.gain(taterTots);
+		foodService.gain(dicedPotatoes);
+		
 	}
 }
